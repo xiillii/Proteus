@@ -34,7 +34,7 @@ namespace Proteus.Domain.Business.ImageHandlers
                     case FileTypes.Jpg:
                         bitmap.Save(pngStream, ImageFormat.Jpeg);
                         break;
-                    case FileTypes.Bpm:
+                    case FileTypes.Bmp:
                         bitmap.Save(pngStream, ImageFormat.Bmp);
                         break;
                     default:

@@ -10,7 +10,7 @@ namespace Proteus.Tests.Factory
 
         public ImageConverterFactoryTests()
         {
-            _base64BmpFile = Resources.bpmFile;
+            _base64BmpFile = Resources.bmpFile;
             _base64JpgFile = Resources.jpgFile;
             _base64PngFile = Resources.pngFile;
         }
@@ -158,7 +158,7 @@ namespace Proteus.Tests.Factory
             var request = new ImageRequest(Guid.NewGuid())
             {
                 FileTypeOrigin = FileTypes.Svg,
-                FileTypeTarget = FileTypes.Bpm,
+                FileTypeTarget = FileTypes.Bmp,
                 ImageContent = Resources.svgFile
             };
 
@@ -170,7 +170,7 @@ namespace Proteus.Tests.Factory
             result.Failure.Should().BeFalse();
             result.Result.Should().NotBeNull();
             result.Result?.ImageContent.Should().Be(_base64BmpFile);
-            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bpm);
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bmp);
         }
 
         [Fact]
@@ -181,7 +181,7 @@ namespace Proteus.Tests.Factory
             var request = new ImageRequest(Guid.NewGuid())
             {
                 FileTypeOrigin = FileTypes.Svg,
-                FileTypeTarget = FileTypes.Bpm,
+                FileTypeTarget = FileTypes.Bmp,
                 ImageContent = Resources.svgFile + Guid.NewGuid().ToString()
             };
 
@@ -201,7 +201,7 @@ namespace Proteus.Tests.Factory
             var request = new ImageRequest(Guid.NewGuid())
             {
                 FileTypeOrigin = FileTypes.Png,
-                FileTypeTarget = FileTypes.Bpm,
+                FileTypeTarget = FileTypes.Bmp,
                 ImageContent = Resources.pngFile
             };
 
@@ -213,7 +213,7 @@ namespace Proteus.Tests.Factory
             result.Failure.Should().BeFalse();
             result.Result.Should().NotBeNull();
             result.Result?.ImageContent.Should().NotBeNullOrEmpty();
-            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bpm);
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bmp);
         }
 
         [Fact]
@@ -224,7 +224,7 @@ namespace Proteus.Tests.Factory
             var request = new ImageRequest(Guid.NewGuid())
             {
                 FileTypeOrigin = FileTypes.Png,
-                FileTypeTarget = FileTypes.Bpm,
+                FileTypeTarget = FileTypes.Bmp,
                 ImageContent = Resources.pngFile + Guid.NewGuid().ToString()
             };
 
@@ -289,6 +289,179 @@ namespace Proteus.Tests.Factory
                 FileTypeOrigin = FileTypes.Png,
                 FileTypeTarget = FileTypes.Svg,
                 ImageContent = Resources.pngFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Convert_Bmp_To_Jpg_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Bmp,
+                FileTypeTarget = FileTypes.Jpg,
+                ImageContent = Resources.bmpFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Jpg);
+        }
+
+        [Fact]
+        public void Convert_Bmp_To_Jpg_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Bmp,
+                FileTypeTarget = FileTypes.Jpg,
+                ImageContent = Resources.bmpFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Convert_Bmp_To_Png_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Bmp,
+                FileTypeTarget = FileTypes.Png,
+                ImageContent = Resources.bmpFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Png);
+        }
+
+        [Fact]
+        public void Convert_Bmp_To_Png_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Bmp,
+                FileTypeTarget = FileTypes.Png,
+                ImageContent = Resources.bmpFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+
+
+        [Fact]
+        public void Convert_Jpg_To_Bmp_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Jpg,
+                FileTypeTarget = FileTypes.Bmp,
+                ImageContent = Resources.jpgFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bmp);
+        }
+
+        [Fact]
+        public void Convert_Jpg_To_Bmp_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Jpg,
+                FileTypeTarget = FileTypes.Bmp,
+                ImageContent = Resources.jpgFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Convert_Jpg_To_Png_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Jpg,
+                FileTypeTarget = FileTypes.Png,
+                ImageContent = Resources.jpgFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Png);
+        }
+
+        [Fact]
+        public void Convert_Jpg_To_Png_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Jpg,
+                FileTypeTarget = FileTypes.Png,
+                ImageContent = Resources.jpgFile + Guid.NewGuid().ToString()
             };
 
             // act

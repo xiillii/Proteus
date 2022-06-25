@@ -32,7 +32,8 @@ namespace Proteus.Domain.Business
                     break;
                 case FileTypes.Jpg:
                     break;
-                case FileTypes.Bpm:
+                case FileTypes.Bmp:
+                    _handler = new BmpHandler();
                     break;
                 
             }

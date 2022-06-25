@@ -5,6 +5,6 @@
         Svg,
         Png,
         Jpg,
-        Bpm
+        Bmp
     }
 }

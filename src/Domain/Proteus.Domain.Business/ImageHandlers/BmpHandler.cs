@@ -4,13 +4,12 @@ using Proteus.Shared.Entities.Dtos;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-
 namespace Proteus.Domain.Business.ImageHandlers
 {
     /// <summary>
-    /// Png converter file handler
+    /// Bmp converter file handler
     /// </summary>
-    public class PngHandler : BaseHandler
+    public class BmpHandler : BaseHandler
     {
         public override OperationResult<ImageResponse> Execute(ImageRequest? request)
         {
@@ -22,14 +21,14 @@ namespace Proteus.Domain.Business.ImageHandlers
 
                 using var stream = new MemoryStream(byteArray);
                 var image = Image.FromStream(stream);
-                
-                
+
+
                 using var pngStream = new MemoryStream();
-                
+
                 switch (request!.FileTypeTarget)
                 {
-                    case FileTypes.Bmp:
-                        image.Save(pngStream, ImageFormat.Bmp);
+                    case FileTypes.Png:
+                        image.Save(pngStream, ImageFormat.Png);
                         break;
                     case FileTypes.Jpg:
                         image.Save(pngStream, ImageFormat.Jpeg);

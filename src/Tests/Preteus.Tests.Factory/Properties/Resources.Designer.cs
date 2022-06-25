@@ -63,9 +63,9 @@ namespace Proteus.Tests.Factory.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Qk22qQMAAAAAADYAAAAoAAAALAEAAMgAAAABACAAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string bpmFile {
+        internal static string bmpFile {
             get {
-                return ResourceManager.GetString("bpmFile", resourceCulture);
+                return ResourceManager.GetString("bmpFile", resourceCulture);
             }
         }
         
