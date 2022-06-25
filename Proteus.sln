@@ -3,9 +3,53 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2E929B83-5BAE-46FE-B715-C8848A768A2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{824304C5-7D65-473F-9E56-CB3BFED6E355}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A70322B0-3FE6-42AB-A6A1-20D716523D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{413A5ACB-E7B8-497B-93F1-846293621D72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proteus.Shared.Contracts", "src\Shared\Proteus.Shared.Contracts\Proteus.Shared.Contracts.csproj", "{80111DE5-D9D8-4457-9FAC-94B3248EEEA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proteus.Shared.Entities", "src\Shared\Proteus.Shared.Entities\Proteus.Shared.Entities.csproj", "{91B320F6-0DBE-4275-AB55-1395EADA4A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proteus.Domain.Business", "src\Domain\Proteus.Domain.Business\Proteus.Domain.Business.csproj", "{68D46016-6600-4835-8512-21FB144386F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proteus.Tests.Factory", "src\Tests\Preteus.Tests.Factory\Proteus.Tests.Factory.csproj", "{9FDCE577-16A2-49F0-A327-34F67C912674}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80111DE5-D9D8-4457-9FAC-94B3248EEEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80111DE5-D9D8-4457-9FAC-94B3248EEEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80111DE5-D9D8-4457-9FAC-94B3248EEEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80111DE5-D9D8-4457-9FAC-94B3248EEEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91B320F6-0DBE-4275-AB55-1395EADA4A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91B320F6-0DBE-4275-AB55-1395EADA4A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91B320F6-0DBE-4275-AB55-1395EADA4A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91B320F6-0DBE-4275-AB55-1395EADA4A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D46016-6600-4835-8512-21FB144386F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D46016-6600-4835-8512-21FB144386F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D46016-6600-4835-8512-21FB144386F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D46016-6600-4835-8512-21FB144386F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FDCE577-16A2-49F0-A327-34F67C912674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FDCE577-16A2-49F0-A327-34F67C912674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FDCE577-16A2-49F0-A327-34F67C912674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FDCE577-16A2-49F0-A327-34F67C912674}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{80111DE5-D9D8-4457-9FAC-94B3248EEEA2} = {413A5ACB-E7B8-497B-93F1-846293621D72}
+		{91B320F6-0DBE-4275-AB55-1395EADA4A5D} = {413A5ACB-E7B8-497B-93F1-846293621D72}
+		{68D46016-6600-4835-8512-21FB144386F8} = {2E929B83-5BAE-46FE-B715-C8848A768A2A}
+		{9FDCE577-16A2-49F0-A327-34F67C912674} = {A70322B0-3FE6-42AB-A6A1-20D716523D56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EEDE6894-516E-43DD-AD83-42B4B6778785}
