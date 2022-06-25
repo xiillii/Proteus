@@ -1,8 +1,10 @@
-﻿namespace Proteus.Shared.Contracts
+﻿using Proteus.Shared.Entities.Dtos;
+
+namespace Proteus.Shared.Contracts
 {
     public interface IProteusFactory<in T, TU>
     {
         OperationResult<TU> Execute(T request);
-        bool Validate(T request);
+        ErrorDto? Validate(T request);
     }
 }

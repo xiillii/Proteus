@@ -1,20 +1,46 @@
-﻿using Proteus.Shared.Contracts;
+﻿using Proteus.Domain.Business.ImageHandlers;
+using Proteus.Shared.Contracts;
+using Proteus.Shared.Contracts.Handlers;
 using Proteus.Shared.Entities;
+using Proteus.Shared.Entities.Dtos;
 
 namespace Proteus.Domain.Business
 {
     public class ImageConverterFactory: IProteusFactory<ImageRequest, ImageResponse>
     {
+        private IProteusHandler<ImageRequest, ImageResponse> _handler;
+
+        public ImageConverterFactory()
+        {
+            _handler = new BaseHandler();
+        }
+        
         public OperationResult<ImageResponse> Execute(ImageRequest request)
         {
-            var response = new ImageResponse();
+            
+            var errors = Validate(request);
+            if (errors != null)
+                return new OperationResult<ImageResponse>(errors);
 
-            return new OperationResult<ImageResponse>(response);
+            switch (request.FileTypeOrigin)
+            {
+                case FileTypes.Svg:
+                    _handler = new SvgHandler();
+                    break;
+                case FileTypes.Png:
+                    break;
+                case FileTypes.Jpg:
+                    break;
+                case FileTypes.Bpm:
+                    break;
+                
+            }
+            var result = _handler.Execute(request);
+
+            return result;
         }
 
-        public bool Validate(ImageRequest request)
-        {
-            throw new NotImplementedException();
-        }
+        public ErrorDto? Validate(ImageRequest request) 
+            => _handler.Validate(request);
     }
 }

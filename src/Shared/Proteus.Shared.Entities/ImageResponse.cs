@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Proteus.Shared.Entities
+﻿namespace Proteus.Shared.Entities
 {
     public class ImageResponse: BaseRequest
     {
+        public FileTypes FileTypeTarget { get; set; }
     }
 }
