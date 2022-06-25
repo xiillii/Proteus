@@ -31,6 +31,7 @@ namespace Proteus.Domain.Business
                     _handler = new PngHandler();
                     break;
                 case FileTypes.Jpg:
+                    _handler = new JpgHandler();
                     break;
                 case FileTypes.Bmp:
                     _handler = new BmpHandler();
