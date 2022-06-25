@@ -13,7 +13,7 @@ namespace Proteus.Domain.Business.ImageHandlers
         /// <param name="request"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public ErrorDto? Validate(ImageRequest? request)
+        public virtual ErrorDto? Validate(ImageRequest? request)
         {
             ErrorDto? result = null;
             var lstErrors = new List<string>();
@@ -24,10 +24,7 @@ namespace Proteus.Domain.Business.ImageHandlers
             }
             else
             {
-                if (request.FileTypeOrigin != FileTypes.Svg)
-                {
-                    lstErrors.Add("Request image must be SVG");
-                }
+                
 
                 if (request.ImageContent == null)
                 {

@@ -192,5 +192,111 @@ namespace Proteus.Tests.Factory
             result.Success.Should().BeFalse();
             result.Failure.Should().BeTrue();
         }
+
+        [Fact]
+        public void Convert_Png_To_Bpm_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Png,
+                FileTypeTarget = FileTypes.Bpm,
+                ImageContent = Resources.pngFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Bpm);
+        }
+
+        [Fact]
+        public void Convert_Png_To_Bpm_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Png,
+                FileTypeTarget = FileTypes.Bpm,
+                ImageContent = Resources.pngFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Convert_Png_To_Jpg_Success_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Png,
+                FileTypeTarget = FileTypes.Jpg,
+                ImageContent = Resources.pngFile
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeTrue();
+            result.Failure.Should().BeFalse();
+            result.Result.Should().NotBeNull();
+            result.Result?.ImageContent.Should().NotBeNullOrEmpty();
+            result.Result?.FileTypeTarget.Should().Be(FileTypes.Jpg);
+        }
+
+        [Fact]
+        public void Convert_Png_To_Jpg_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Png,
+                FileTypeTarget = FileTypes.Jpg,
+                ImageContent = Resources.pngFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
+        
+        [Fact]
+        public void Convert_Png_To_Svg_Failure_Test()
+        {
+            // arrange
+            IProteusFactory<ImageRequest, ImageResponse> target = new ImageConverterFactory();
+            var request = new ImageRequest(Guid.NewGuid())
+            {
+                FileTypeOrigin = FileTypes.Png,
+                FileTypeTarget = FileTypes.Svg,
+                ImageContent = Resources.pngFile + Guid.NewGuid().ToString()
+            };
+
+            // act
+            var result = target.Execute(request);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.Failure.Should().BeTrue();
+        }
     }
 }

@@ -1,16 +1,15 @@
-﻿using Proteus.Shared.Contracts;
+﻿using System.Drawing;
+using Proteus.Shared.Contracts;
 using Proteus.Shared.Entities;
 using Proteus.Shared.Entities.Dtos;
 using Svg;
 using System.Drawing.Imaging;
 using System.Text;
 
+
 namespace Proteus.Domain.Business.ImageHandlers
 {
-    /// <summary>
-    /// Svg converter file handler
-    /// </summary>
-    public class SvgHandler : BaseHandler
+    public class PngHandler : BaseHandler
     {
         public override OperationResult<ImageResponse> Execute(ImageRequest? request)
         {
@@ -18,30 +17,27 @@ namespace Proteus.Domain.Business.ImageHandlers
             {
                 var imageContent = request?.ImageContent ?? "";
 
-                var byteArray = Encoding.ASCII.GetBytes(imageContent);
+                var byteArray = Convert.FromBase64String(imageContent);
+
                 using var stream = new MemoryStream(byteArray);
-                var svgDocument = SvgDocument.Open<SvgDocument>(stream);
-                var bitmap = svgDocument.Draw();
+                var image = Image.FromStream(stream);
+                
+                
                 using var pngStream = new MemoryStream();
                 
-
                 switch (request!.FileTypeTarget)
                 {
-                    case FileTypes.Png:
-
-                        bitmap.Save(pngStream, ImageFormat.Png);
+                    case FileTypes.Bpm:
+                        image.Save(pngStream, ImageFormat.Bmp);
                         break;
                     case FileTypes.Jpg:
-                        bitmap.Save(pngStream, ImageFormat.Jpeg);
-                        break;
-                    case FileTypes.Bpm:
-                        bitmap.Save(pngStream, ImageFormat.Bmp);
+                        image.Save(pngStream, ImageFormat.Jpeg);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
 
-                
+
                 var pngBytes = pngStream.ToArray();
 
                 var imageResponse = new ImageResponse

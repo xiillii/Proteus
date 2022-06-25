@@ -28,6 +28,7 @@ namespace Proteus.Domain.Business
                     _handler = new SvgHandler();
                     break;
                 case FileTypes.Png:
+                    _handler = new PngHandler();
                     break;
                 case FileTypes.Jpg:
                     break;
